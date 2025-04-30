@@ -24,7 +24,7 @@ A ReactJS frontend that connects to the Flask API and displays nutritional break
 
 ## 🌍 Deployment
 Frontend is live and hosted at:  
-**👉 [newnova.netlify.app](newnova.netlify.app)**
+https://newnova.netlify.app
 
 You can enter dishes like:
 ```
