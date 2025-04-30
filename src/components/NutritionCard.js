@@ -8,7 +8,8 @@ function NutritionCard({ data }) {
   }
 
   return (
-    <div className="card">
+  <div className="card-container">
+    <div className="nutrition-box">
       <h2>{data.dish_type}</h2>
       <h3>Nutrition per 200ml katori</h3>
       <ul>
@@ -17,16 +18,27 @@ function NutritionCard({ data }) {
         <li>Carbs: {data.estimated_nutrition_per_200ml_katori.carbs} g</li>
         <li>Fat: {data.estimated_nutrition_per_200ml_katori.fat} g</li>
       </ul>
-      <h4>Ingredients Used:</h4>
+    </div>
+
+    <div className="ingredient-box">
+      <h3>Ingredients Used:</h3>
       <ul>
-        {data.ingredients_used.map((item, i) => (
-          <li key={i}>
-            {item.original} → {item.ingredient} ({item.quantity}) — Confidence: {item.match_confidence}%
+        {data.ingredients_used.map((item, index) => (
+          <li key={index}>
+            <strong>{item.original}</strong> → {item.ingredient} ({item.quantity}) — Confidence: {item.match_confidence}%
+            <div className="confidence-bar">
+              <div className="confidence-fill" style={{
+                width: `${item.match_confidence}%`,
+                backgroundColor: item.match_confidence > 90 ? '#4CAF50' : item.match_confidence > 80 ? '#FFC107' : '#F44336'
+              }}></div>
+            </div>
           </li>
         ))}
       </ul>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default NutritionCard;
