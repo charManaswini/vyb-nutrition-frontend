@@ -1,4 +1,6 @@
 import React from 'react';
+import './NutritionCard.css';
+
 
 function NutritionCard({ data }) {
   if (data.error) {
